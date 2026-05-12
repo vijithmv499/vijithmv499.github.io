@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vijith M.V. — Senior Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+<style>
+  :root {
+    /* Dark default — this is the "statement" mode */
+    --bg: oklch(0.135 0.012 250);
+    --bg-elev: oklch(0.175 0.014 250);
+    --bg-card: oklch(0.20 0.014 250);
+    --fg: oklch(0.96 0.005 80);
+    --muted: oklch(0.74 0.008 80);
+    --faint: oklch(0.55 0.008 80);
+    --rule: oklch(0.96 0.005 80 / 0.14);
+    --rule-soft: oklch(0.96 0.005 80 / 0.07);
+    --accent: oklch(0.78 0.16 55);
+    --accent-2: oklch(0.78 0.16 55);
+    --sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  [data-theme="light"] {
+    --bg: oklch(0.962 0.006 80);
+    --bg-elev: oklch(0.99 0.004 80);
+    --bg-card: oklch(0.98 0.005 80);
+    --fg: oklch(0.16 0.01 80);
+    --muted: oklch(0.38 0.012 80);
+    --faint: oklch(0.55 0.012 80);
+    --rule: oklch(0.16 0.01 80 / 0.14);
+    --rule-soft: oklch(0.16 0.01 80 / 0.07);
+    --accent: oklch(0.55 0.16 45);
+    --accent-2: oklch(0.55 0.16 45);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.18s, color 0.18s;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: color-mix(in oklab, var(--accent) 30%, transparent); }
+
+  /* Top */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in oklab, var(--bg) 82%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .topbar-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-dot {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .nav { display: flex; gap: 4px; align-items: center; }
+  .nav a {
+    padding: 8px 14px;
+    font-size: 14px;
+    color: var(--muted);
+    border-radius: 999px;
+    transition: background 0.12s, color 0.12s;
+  }
+  .nav a:hover { color: var(--fg); background: var(--bg-elev); }
+  .theme-toggle {
+    margin-left: 8px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--rule);
+    background: var(--bg-elev);
+    color: var(--fg);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: transform 0.18s, border-color 0.15s;
+  }
+  .theme-toggle:hover { border-color: var(--fg); }
+  .theme-toggle svg { width: 14px; height: 14px; }
+  [data-theme="light"] .theme-toggle .sun { display: none; }
+  [data-theme="light"] .theme-toggle .moon { display: block; }
+  .theme-toggle .sun { display: block; }
+  .theme-toggle .moon { display: none; }
+
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 96px 0 80px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 56px;
+    align-items: center;
+  }
+  .hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px;
+    background: color-mix(in oklab, var(--accent) 16%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent) 36%, transparent);
+    color: var(--accent);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 36px;
+  }
+  .hero-status .dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  h1.hero-title {
+    font-size: clamp(48px, 7.4vw, 96px);
+    font-weight: 600;
+    letter-spacing: -0.034em;
+    line-height: 0.96;
+    margin: 0 0 28px;
+    text-wrap: balance;
+  }
+  h1.hero-title .accent { color: var(--accent); }
+  h1.hero-title em {
+    font-style: italic;
+    font-weight: 500;
+  }
+  .hero-lede {
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0 0 36px;
+    max-width: 50ch;
+    text-wrap: pretty;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    font-size: 14px;
+    font-weight: 500;
+    background: var(--fg);
+    color: var(--bg);
+    border: 1px solid var(--fg);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.12s ease, background 0.12s;
+    font-family: inherit;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.ghost {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--rule);
+  }
+  .btn.ghost:hover { border-color: var(--fg); }
+  .btn.accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: oklch(0.13 0 0);
+  }
+  .hero-portrait-wrap {
+    position: relative;
+  }
+  .hero-portrait {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    filter: grayscale(0.05);
+  }
+  .hero-portrait-tag {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    background: oklch(0.13 0.012 250 / 0.85);
+    backdrop-filter: blur(10px);
+    color: oklch(0.96 0.005 80);
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    border: 1px solid oklch(0.96 0.005 80 / 0.18);
+  }
+
+  /* Marquee row */
+  .marquee {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    overflow: hidden;
+    padding: 18px 0;
+    background: var(--bg-elev);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 56px;
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--faint);
+    white-space: nowrap;
+  }
+  .marquee-track span { display: inline-flex; align-items: center; gap: 56px; }
+  .marquee-track .dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; display: inline-block; }
+  .marquee-inner { display: flex; gap: 56px; padding: 0 40px; }
+
+  /* Sections */
+  section.block { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+  .block-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 48px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .block-head-text { max-width: 720px; }
+  .block-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin: 0 0 14px;
+  }
+  .block-eyebrow .num {
+    background: color-mix(in oklab, var(--accent) 18%, transparent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+  }
+  .block-title {
+    font-size: clamp(34px, 4.4vw, 52px);
+    font-weight: 600;
+    letter-spacing: -0.028em;
+    line-height: 1.05;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .block-title em { font-style: italic; font-weight: 500; color: var(--accent); }
+  .block-aside {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-body p {
+    font-size: 19px;
+    line-height: 1.55;
+    margin: 0 0 18px;
+    color: var(--fg);
+    max-width: 56ch;
+    text-wrap: pretty;
+  }
+  .about-body p:last-child { margin-bottom: 0; }
+  .about-body strong { color: var(--accent); font-weight: 500; }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .stat-card .v {
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin: 0 0 4px;
+  }
+  .stat-card .v .unit {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--faint);
+    margin-left: 4px;
+  }
+  .stat-card .k {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  /* Experience — big year stack */
+  .roles { display: grid; gap: 0; }
+  .role-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    gap: 40px;
+    padding: 32px 0;
+    border-top: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+  .role-row:first-child { border-top: none; padding-top: 0; }
+  .role-row .year {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+  }
+  .role-row .year .end {
+    color: var(--faint);
+  }
+  .role-row.current .year .end {
+    color: var(--accent);
+  }
+  .role-row .duration {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+  .role-row h3 {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.018em;
+    margin: 0 0 6px;
+  }
+  .role-row h3 .co {
+    color: var(--muted);
+  }
+  .role-row .role-meta {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 10px;
+  }
+  .role-row p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 58ch;
+    text-wrap: pretty;
+  }
+  .role-row .tag-col {
+    text-align: right;
+  }
+  .role-row .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--faint);
+    padding: 5px 11px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+  }
+  .role-row.current .tag {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 12%, transparent);
+  }
+
+  /* Skills */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .stack-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .stack-card h3 {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin: 0 0 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .stack-card h3 span {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .stack-list {
+    display: grid;
+    gap: 10px;
+  }
+  .stack-item {
+    font-size: 16.5px;
+    font-weight: 500;
+    letter-spacing: -0.008em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .stack-item .level {
+    display: inline-flex;
+    gap: 3px;
+  }
+  .stack-item .level i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--rule);
+    display: inline-block;
+  }
+  .stack-item .level i.on { background: var(--accent); }
+
+  /* Work */
+  .work-list { display: grid; gap: 16px; }
+  .work-row {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: 32px;
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    align-items: start;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .work-row:hover {
+    border-color: var(--accent);
+  }
+  .work-num {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+  }
+  .work-num .when {
+    display: block;
+    color: var(--faint);
+    margin-top: 6px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .work-row h3 {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+  }
+  .work-row p {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 60ch;
+    text-wrap: pretty;
+  }
+  .stack-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .stack-chip {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    color: var(--muted);
+  }
+  .work-row .work-cta {
+    align-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    padding: 8px 14px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Writing */
+  .essay-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .essay-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    min-height: 240px;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .essay-card:hover { border-color: var(--accent); }
+  .essay-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 24px;
+  }
+  .essay-meta .tag { color: var(--accent); }
+  .essay-card h3 {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.018em;
+    margin: 0 0 14px;
+    line-height: 1.18;
+  }
+  .essay-card h3 em { font-style: italic; }
+  .essay-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14.5px;
+    flex: 1;
+  }
+  .essay-card .read {
+    margin-top: 22px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  /* Contact */
+  .contact-flex {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .contact-pitch h3 {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 500;
+    letter-spacing: -0.026em;
+    line-height: 1.08;
+    margin: 0 0 24px;
+    text-wrap: balance;
+  }
+  .contact-pitch h3 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .contact-pitch p {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 48ch;
+    margin: 0 0 32px;
+  }
+  .channels {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .ch {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: 16px;
+    padding: 14px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    align-items: center;
+    transition: border-color 0.15s;
+  }
+  .ch:hover { border-color: var(--accent); }
+  .ch-k {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .ch-v {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .ch-arr { color: var(--faint); font-family: var(--mono); }
+  .ch:hover .ch-arr { color: var(--accent); }
+
+  form.contact {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 32px;
+    display: grid;
+    gap: 18px;
+  }
+  form.contact h4 {
+    margin: 0 0 6px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  form.contact label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 8px;
+    display: block;
+  }
+  form.contact input,
+  form.contact textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--fg);
+    outline: none;
+    transition: border-color 0.12s, box-shadow 0.12s;
+  }
+  form.contact input:focus, form.contact textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 16%, transparent);
+  }
+  form.contact textarea { min-height: 110px; resize: vertical; line-height: 1.55; }
+
+  /* Footer */
+  footer.foot {
+    padding: 40px 0 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--faint);
+  }
+  footer.foot a { color: var(--muted); }
+  footer.foot a:hover { color: var(--accent); }
+
+  @media (max-width: 900px) {
+    .topbar-inner, .container { padding-left: 22px; padding-right: 22px; }
+    .nav a:not(.theme-toggle) { display: none; }
+    .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    .hero-portrait-wrap { max-width: 280px; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .role-row { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+    .role-row .tag-col { text-align: left; }
+    .stack-grid { grid-template-columns: 1fr 1fr; }
+    .work-row { grid-template-columns: 1fr; }
+    .essay-grid { grid-template-columns: 1fr; }
+    .contact-flex { grid-template-columns: 1fr; }
+    .block-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .block-aside { text-align: left; white-space: normal; }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top"><span class="brand-dot"></span> Vijith M.V.</a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#stack">Stack</a>
+        <a href="#work">Work</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div id="top">
+    <!-- Hero -->
+    <div class="container">
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-status"><span class="dot"></span>Open for new engagements · Bengaluru, IN</div>
+            <h1 class="hero-title">Senior consultant for teams shipping <em>products that last</em>.</h1>
+            <p class="hero-lede">Twelve years of engineering across fintech, ed-tech and regulated data. I help teams build maintainable backends and the data platforms that hold them together.</p>
+            <div class="hero-cta">
+              <a class="btn accent" href="#contact">Start a conversation →</a>
+              <a class="btn ghost" href="#" onclick="alert('Add your résumé PDF to the project and link it here.'); return false;">Download résumé ↓</a>
+            </div>
+          </div>
+          <div class="hero-portrait-wrap">
+            <img class="hero-portrait" src="assets/portrait.jpg" alt="Vijith MV" />
+            <div class="hero-portrait-tag">Bengaluru · IST (UTC+5:30)</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="marquee">
+      <div class="marquee-inner">
+        <div class="marquee-track">
+          <span>Equinox Solutions</span>
+          <span class="dot"></span>
+          <span>Beskar Technologies</span>
+          <span class="dot"></span>
+          <span>Navi</span>
+          <span class="dot"></span>
+          <span>MavenHive</span>
+          <span class="dot"></span>
+          <span>Foradian</span>
+          <span class="dot"></span>
+          <span>hData</span>
+          <span class="dot"></span>
+          <span>12 yrs · 6 teams</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="container">
+      <section class="block" id="about">
+        <div class="block-head">
+          <div class="block-head-text">
+            <p class="block-eyebrow"><span class="num">01</span>About</p>
+            <h2 class="block-title">Senior judgment, <em>without</em> the senior overhead.</h2>
+          </div>
+          <div class="block-aside">Practice · Bengaluru</div>
+        </div>
+        <div class="about-grid">
+          <div class="about-body">
+            <p>I'm <strong>Vijith</strong>. I've spent the last decade quietly making other people's code easier to work with — backends for student information systems, neobanks, and most recently a regulatory-intelligence platform for the US energy sector.</p>
+            <p>Today I run <strong>Equinox Solutions</strong>, an independent consultancy. Engagements are usually senior-shaped: architecture review, data-platform builds, embedded technical leadership for product teams that want a steady hand on the wheel.</p>
+            <p>My favourite kind of work is the codebase that's <em>almost</em> right — a team that knows what it's trying to build, but the wiring has accumulated a few too many decisions made under pressure. I come in, listen, and quietly start removing things until the shape of the product is visible again.</p>
+          </div>
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="v">12<span class="unit">yrs</span></div>
+              <div class="k">Years shipping</div>
+            </div>
+            <div class="stat-card">
+              <div class="v">6<span class="unit">teams</span></div>
+              <div class="k">Companies</div>
+            </div>
+            <div class="stat-card">
+              <div class="v">∞<span class="unit">PRs</span></div>
+              <div class="k">Reviewed</div>
+            </div>
+            <div class="stat-card">
+              <div class="v">2026</div>
+              <div class="k">Booking calendar</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Experience -->
+    <div class="container">
+      <section class="block" id="experience">
+        <div class="block-head">
+          <div class="block-head-text">
+            <p class="block-eyebrow"><span class="num">02</span>Experience</p>
+            <h2 class="block-title">Twelve years, <em>six teams</em>.</h2>
+          </div>
+          <div class="block-aside">2013 — Present</div>
+        </div>
+        <div class="roles">
+          <div class="role-row current">
+            <div>
+              <div class="year">2025 <span class="end">→ Now</span></div>
+              <div class="duration">Current</div>
+            </div>
+            <div>
+              <h3>Senior Consultant <span class="co">/ Equinox Solutions</span></h3>
+              <p class="role-meta">Freelance · Bengaluru</p>
+              <p>Independent practice. Embedded engineering leadership for product teams — architecture review, data infrastructure, and team coaching, scoped one engagement at a time.</p>
+            </div>
+            <div class="tag-col"><span class="tag">● Now</span></div>
+          </div>
+          <div class="role-row">
+            <div>
+              <div class="year">2021 <span class="end">— 2025</span></div>
+              <div class="duration">4 yrs 5 mos</div>
+            </div>
+            <div>
+              <h3>Lead Consultant <span class="co">/ Beskar Technologies</span></h3>
+              <p class="role-meta">Full-time · Bengaluru</p>
+              <p>Led engagements across regulated data, fintech and SaaS. Built and ran the data platform for hData — a regulatory-intelligence product for US public utility commissions.</p>
+            </div>
+            <div class="tag-col"><span class="tag">Lead</span></div>
+          </div>
+          <div class="role-row">
+            <div>
+              <div class="year">2019 <span class="end">— 2021</span></div>
+              <div class="duration">1 yr 5 mos</div>
+            </div>
+            <div>
+              <h3>Software Engineer <span class="co">/ Navi</span></h3>
+              <p class="role-meta">Full-time · Bengaluru</p>
+              <p>Backend engineer on a fast-growing neobank. Lending workflows, KYC pipelines, and the internal services that kept underwriting honest at scale.</p>
+            </div>
+            <div class="tag-col"><span class="tag">FinTech</span></div>
+          </div>
+          <div class="role-row">
+            <div>
+              <div class="year">2016 <span class="end">— 2019</span></div>
+              <div class="duration">3 yrs 6 mos · 2 roles</div>
+            </div>
+            <div>
+              <h3>Senior Associate → Associate <span class="co">/ MavenHive</span></h3>
+              <p class="role-meta">Full-time · Bengaluru</p>
+              <p>Consulting engineer at a Bengaluru product shop. Shipped Rails and React across half a dozen client teams — and learned how to be useful inside a codebase I didn't write.</p>
+            </div>
+            <div class="tag-col"><span class="tag">Consult</span></div>
+          </div>
+          <div class="role-row">
+            <div>
+              <div class="year">2013 <span class="end">— 2016</span></div>
+              <div class="duration">2 yrs 10 mos</div>
+            </div>
+            <div>
+              <h3>Software Engineer <span class="co">/ Foradian Technologies</span></h3>
+              <p class="role-meta">Full-time · Bengaluru</p>
+              <p>First job out of college. Wrote Rails for Fedena, a student information system used by schools across the world — the codebase that taught me what "production" actually means.</p>
+            </div>
+            <div class="tag-col"><span class="tag">EdTech</span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Stack -->
+    <div class="container">
+      <section class="block" id="stack">
+        <div class="block-head">
+          <div class="block-head-text">
+            <p class="block-eyebrow"><span class="num">03</span>Stack</p>
+            <h2 class="block-title">Tools I reach for, <em>in that order</em>.</h2>
+          </div>
+          <div class="block-aside">Anthropic CCA-F · in progress</div>
+        </div>
+        <div class="stack-grid">
+          <div class="stack-card">
+            <h3>Languages <span>04</span></h3>
+            <div class="stack-list">
+              <div class="stack-item">Python <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+              <div class="stack-item">Ruby on Rails <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+              <div class="stack-item">Java · Spring <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+              <div class="stack-item">Go <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+            </div>
+          </div>
+          <div class="stack-card">
+            <h3>Data <span>04</span></h3>
+            <div class="stack-list">
+              <div class="stack-item">PostgreSQL <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+              <div class="stack-item">MySQL <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+              <div class="stack-item">Snowflake · DBT <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+              <div class="stack-item">Elasticsearch <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+            </div>
+          </div>
+          <div class="stack-card">
+            <h3>Platform <span>04</span></h3>
+            <div class="stack-list">
+              <div class="stack-item">AWS <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+              <div class="stack-item">Kubernetes <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+              <div class="stack-item">Terraform <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+              <div class="stack-item">Dagster Plus <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+            </div>
+          </div>
+          <div class="stack-card">
+            <h3>Practice <span>04</span></h3>
+            <div class="stack-list">
+              <div class="stack-item">Eng leadership <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+              <div class="stack-item">Pipeline orchestration <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+              <div class="stack-item">Architecture review <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+              <div class="stack-item">Team coaching <span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Work -->
+    <div class="container">
+      <section class="block" id="work">
+        <div class="block-head">
+          <div class="block-head-text">
+            <p class="block-eyebrow"><span class="num">04</span>Selected work</p>
+            <h2 class="block-title">A small selection. <em>The rest is under NDA.</em></h2>
+          </div>
+          <div class="block-aside">Featured · 2023 — 2025</div>
+        </div>
+        <div class="work-list">
+          <div class="work-row">
+            <div class="work-num">
+              01
+              <span class="when">2023 — 2025</span>
+            </div>
+            <div>
+              <h3>hData — regulatory intelligence for US utilities</h3>
+              <p>Designed and shipped the data pipeline that scrapes filings from US Public Utility Commission websites, lands them in Snowflake, transforms with DBT, and ships into Elasticsearch — making decades of regulatory text searchable for energy-sector analysts.</p>
+              <div class="stack-chips">
+                <span class="stack-chip">Dagster Plus</span>
+                <span class="stack-chip">Snowflake</span>
+                <span class="stack-chip">DBT</span>
+                <span class="stack-chip">Elasticsearch</span>
+                <span class="stack-chip">Python</span>
+              </div>
+            </div>
+            <a class="work-cta" href="https://www.hdata.com/" target="_blank" rel="noopener">Visit ↗</a>
+          </div>
+          <div class="work-row">
+            <div class="work-num">
+              02
+              <span class="when">On request</span>
+            </div>
+            <div>
+              <h3>Fintech &amp; SaaS engagements</h3>
+              <p>Backend, data and platform work across neobanks, ed-tech, and B2B SaaS — under NDA. Happy to walk through system diagrams, team outcomes, and what I'd do differently in conversation.</p>
+              <div class="stack-chips">
+                <span class="stack-chip">Rails</span>
+                <span class="stack-chip">Spring Boot</span>
+                <span class="stack-chip">Go</span>
+                <span class="stack-chip">AWS</span>
+                <span class="stack-chip">Kubernetes</span>
+              </div>
+            </div>
+            <a class="work-cta" href="#contact">Brief →</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Writing -->
+    <div class="container">
+      <section class="block" id="writing">
+        <div class="block-head">
+          <div class="block-head-text">
+            <p class="block-eyebrow"><span class="num">05</span>Writing</p>
+            <h2 class="block-title">Field notes <em>from the work.</em></h2>
+          </div>
+          <div class="block-aside">3 drafts · launching 2026</div>
+        </div>
+        <div class="essay-grid">
+          <div class="essay-card">
+            <div class="essay-meta"><span>Coming soon</span><span class="tag">Practice</span></div>
+            <h3>The first three weeks of a consulting engagement</h3>
+            <p>What I look at, what I don't touch, and how I decide which technical debt is actually worth paying down.</p>
+            <div class="read">8 min read · est.</div>
+          </div>
+          <div class="essay-card">
+            <div class="essay-meta"><span>Draft</span><span class="tag">Data</span></div>
+            <h3>A field guide to <em>Dagster Plus</em> for regulated data</h3>
+            <p>Patterns and anti-patterns from shipping a production pipeline against scraped public-record sources.</p>
+            <div class="read">12 min read · est.</div>
+          </div>
+          <div class="essay-card">
+            <div class="essay-meta"><span>Draft</span><span class="tag">Essay</span></div>
+            <h3>Maintainable, <em>not minimal</em></h3>
+            <p>Why I keep telling teams to write more code, not less — and the kind of repetition that earns its keep.</p>
+            <div class="read">6 min read · est.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Contact -->
+    <div class="container">
+      <section class="block" id="contact">
+        <div class="block-head">
+          <div class="block-head-text">
+            <p class="block-eyebrow"><span class="num">06</span>Contact</p>
+            <h2 class="block-title">Let's <em>talk</em>.</h2>
+          </div>
+          <div class="block-aside">Replies within 2 business days</div>
+        </div>
+        <div class="contact-flex">
+          <div class="contact-pitch">
+            <h3>If your team is mid-build and <em>stuck</em>, that's the conversation I'd like to have.</h3>
+            <p>One paragraph about what you're working on is plenty for a first email. From there we can decide whether a short engagement makes sense.</p>
+            <div class="channels">
+              <a class="ch" href="mailto:vijiths2c@gmail.com">
+                <span class="ch-k">Email</span>
+                <span class="ch-v">vijiths2c@gmail.com</span>
+                <span class="ch-arr">→</span>
+              </a>
+              <a class="ch" href="https://www.linkedin.com/in/vijith-mv/" target="_blank" rel="noopener">
+                <span class="ch-k">LinkedIn</span>
+                <span class="ch-v">linkedin.com/in/vijith-mv</span>
+                <span class="ch-arr">↗</span>
+              </a>
+              <a class="ch" href="https://github.com/vijithmv499" target="_blank" rel="noopener">
+                <span class="ch-k">GitHub</span>
+                <span class="ch-v">github.com/vijithmv499</span>
+                <span class="ch-arr">↗</span>
+              </a>
+              <div class="ch">
+                <span class="ch-k">Based in</span>
+                <span class="ch-v">Bengaluru, IN — IST</span>
+                <span class="ch-arr">●</span>
+              </div>
+            </div>
+            <a class="btn ghost" href="#" onclick="alert('Add your résumé PDF to the project and link it here.'); return false;">Download résumé ↓</a>
+          </div>
+          <form class="contact" onsubmit="handleSubmit(event)">
+            <h4>Send a note</h4>
+            <div>
+              <label for="es-name">Name</label>
+              <input id="es-name" type="text" required placeholder="Your name" />
+            </div>
+            <div>
+              <label for="es-email">Email</label>
+              <input id="es-email" type="email" required placeholder="you@company.com" />
+            </div>
+            <div>
+              <label for="es-msg">What are you working on?</label>
+              <textarea id="es-msg" required placeholder="One paragraph is plenty."></textarea>
+            </div>
+            <button class="btn accent" type="submit">Send message →</button>
+          </form>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <div>© 2026 Vijith M.V. · Bengaluru</div>
+        <div>Designed &amp; built quietly · <a href="#top">Back to top ↑</a></div>
+      </footer>
+    </div>
+  </div>
+
+<script>
+  (function () {
+    const saved = localStorage.getItem('vijith-theme-s');
+    if (saved) document.body.dataset.theme = saved;
+  })();
+  function toggleTheme() {
+    const next = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+    document.body.dataset.theme = next;
+    localStorage.setItem('vijith-theme-s', next);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    const orig = btn.textContent;
+    btn.textContent = 'Sent ✓';
+    setTimeout(() => {
+      e.target.reset();
+      btn.textContent = orig;
+    }, 2200);
+  }
+</script>
+</body>
+</html>

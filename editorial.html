@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vijith MV — Senior Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+<style>
+  :root {
+    --bg: oklch(0.972 0.008 80);
+    --bg-elev: oklch(0.985 0.006 80);
+    --fg: oklch(0.22 0.012 60);
+    --muted: oklch(0.45 0.012 60);
+    --faint: oklch(0.62 0.01 60);
+    --rule: oklch(0.22 0.012 60 / 0.14);
+    --rule-soft: oklch(0.22 0.012 60 / 0.07);
+    --accent: oklch(0.52 0.12 35);
+    --accent-soft: oklch(0.52 0.12 35 / 0.08);
+    --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  [data-theme="dark"] {
+    --bg: oklch(0.165 0.01 60);
+    --bg-elev: oklch(0.20 0.011 60);
+    --fg: oklch(0.93 0.008 80);
+    --muted: oklch(0.72 0.01 80);
+    --faint: oklch(0.55 0.01 80);
+    --rule: oklch(0.93 0.008 80 / 0.16);
+    --rule-soft: oklch(0.93 0.008 80 / 0.08);
+    --accent: oklch(0.72 0.12 40);
+    --accent-soft: oklch(0.72 0.12 40 / 0.12);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--accent-soft); }
+
+  /* Top bar */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: color-mix(in oklab, var(--bg) 78%, transparent);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .topbar-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .brand em { font-style: italic; color: var(--accent); font-weight: 500; }
+  .nav { display: flex; gap: 28px; align-items: center; }
+  .nav a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    transition: color 0.15s;
+  }
+  .nav a:hover { color: var(--fg); }
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .theme-toggle:hover { color: var(--fg); border-color: var(--fg); }
+  .theme-toggle svg { width: 14px; height: 14px; }
+  [data-theme="dark"] .theme-toggle .sun { display: block; }
+  [data-theme="dark"] .theme-toggle .moon { display: none; }
+  .theme-toggle .sun { display: none; }
+  .theme-toggle .moon { display: block; }
+
+  /* Layout */
+  main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  section { padding: 96px 0; border-top: 1px solid var(--rule-soft); }
+  section:first-of-type { border-top: none; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--faint);
+    margin: 0 0 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule-soft);
+  }
+
+  /* Hero */
+  .hero { padding: 88px 0 64px; }
+  .hero-kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 28px;
+  }
+  .hero-kicker span { color: var(--accent); }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.08;
+    letter-spacing: -0.022em;
+    margin: 0 0 28px;
+    max-width: 18ch;
+    text-wrap: balance;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .hero-lede {
+    font-family: var(--serif);
+    font-size: 21px;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 56ch;
+    margin: 0 0 36px;
+    text-wrap: pretty;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-meta .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: oklch(0.65 0.15 145);
+    display: inline-block;
+  }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .portrait-wrap {
+    position: relative;
+  }
+  .portrait {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 2px;
+    filter: grayscale(0.15) contrast(1.02);
+    display: block;
+  }
+  .portrait-caption {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .prose p {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.65;
+    margin: 0 0 1.1em;
+    color: var(--fg);
+    text-wrap: pretty;
+  }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { font-weight: 500; }
+  .prose em { font-style: italic; }
+
+  /* Experience timeline */
+  .timeline { display: grid; gap: 0; }
+  .role {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 40px;
+    padding: 28px 0;
+    border-top: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+  .role:first-child { border-top: none; padding-top: 0; }
+  .role-years {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--faint);
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+  }
+  .role-years .duration {
+    display: block;
+    color: var(--faint);
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+  .role-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+  }
+  .role-title .at { font-style: italic; color: var(--muted); font-weight: 400; }
+  .role-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 12px;
+  }
+  .role p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15.5px;
+    max-width: 56ch;
+    text-wrap: pretty;
+  }
+  .role.current .role-years .duration { color: var(--accent); opacity: 1; }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 56px;
+  }
+  .skill-group h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 36px;
+  }
+  .skill-list li {
+    font-family: var(--serif);
+    font-size: 17px;
+    padding: 6px 0;
+    color: var(--fg);
+  }
+
+  /* Selected work */
+  .work-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    padding: 32px 0;
+    border-top: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+  .work-item:first-child { border-top: none; padding-top: 0; }
+  .work-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .work-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin: 0 0 10px;
+  }
+  .work-desc {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0 0 14px;
+    max-width: 60ch;
+    text-wrap: pretty;
+  }
+  .work-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .work-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    white-space: nowrap;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+    align-self: start;
+    margin-top: 6px;
+  }
+
+  /* Writing */
+  .essay {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: 32px;
+    padding: 24px 0;
+    border-top: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+  .essay:first-of-type { border-top: none; padding-top: 0; }
+  .essay-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    letter-spacing: 0.06em;
+  }
+  .essay-title {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 500;
+    margin: 0 0 4px;
+    letter-spacing: -0.012em;
+  }
+  .essay-title em { font-style: italic; }
+  .essay-dek {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--muted);
+    margin: 0;
+    max-width: 56ch;
+  }
+  .essay-tag {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+  }
+
+  /* Contact */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .contact-lede {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--fg);
+    margin: 0 0 28px;
+    max-width: 22ch;
+    text-wrap: pretty;
+  }
+  .contact-lede em { font-style: italic; color: var(--accent); }
+  .contact-channels {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .channel {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 16px;
+    font-size: 14px;
+    align-items: baseline;
+  }
+  .channel-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--faint);
+  }
+  .channel-value {
+    font-family: var(--serif);
+    font-size: 16.5px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 4px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .channel-value:hover { border-color: var(--accent); color: var(--accent); }
+
+  form.contact {
+    display: grid;
+    gap: 16px;
+    background: var(--bg-elev);
+    padding: 28px;
+    border: 1px solid var(--rule-soft);
+    border-radius: 4px;
+  }
+  form.contact label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--faint);
+    display: block;
+    margin-bottom: 6px;
+  }
+  form.contact input, form.contact textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--rule);
+    padding: 6px 0 8px;
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--fg);
+    outline: none;
+    transition: border-color 0.15s;
+    border-radius: 0;
+  }
+  form.contact input:focus, form.contact textarea:focus {
+    border-bottom-color: var(--accent);
+  }
+  form.contact textarea {
+    min-height: 100px;
+    resize: vertical;
+    font-family: var(--serif);
+    line-height: 1.5;
+  }
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    align-items: center;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    border: 1px solid var(--fg);
+    background: var(--fg);
+    color: var(--bg);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--fg);
+  }
+  .btn-ghost:hover { color: var(--bg); }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--rule-soft);
+    padding: 36px 0 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  footer a:hover { color: var(--accent); }
+  footer .colophon { max-width: 32ch; font-family: var(--serif); font-size: 13px; text-transform: none; letter-spacing: 0; color: var(--muted); font-style: italic; }
+
+  @media (max-width: 720px) {
+    main { padding: 0 22px; }
+    .topbar-inner { padding: 14px 22px; }
+    .nav { gap: 18px; }
+    .nav a:not(.theme-toggle) { display: none; }
+    section { padding: 64px 0; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .portrait-wrap { max-width: 200px; }
+    .role { grid-template-columns: 1fr; gap: 6px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .essay { grid-template-columns: 1fr; gap: 6px; }
+    .essay-tag { justify-self: start; }
+    .work-item { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body data-theme="light">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">Vijith <em>M.V.</em></a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#work">Work</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-kicker">Senior Consultant <span>·</span> Bengaluru, IN <span>·</span> Available</div>
+      <h1>Engineering leadership for teams who'd rather ship <em>maintainable</em> products than fashionable ones.</h1>
+      <p class="hero-lede">Twelve years writing software for fintech, ed-tech, and regulated data. Currently consulting independently through Equinox Solutions — embedded with teams that want senior judgment without senior overhead.</p>
+      <div class="hero-meta">
+        <span><span class="dot"></span>Open to new engagements</span>
+        <span>Est. 2013</span>
+        <span>6 companies · 12 yrs</span>
+      </div>
+    </section>
+
+    <section id="about">
+      <p class="eyebrow">§ About</p>
+      <div class="about-grid">
+        <div class="portrait-wrap">
+          <img class="portrait" src="assets/portrait.jpg" alt="Vijith MV" />
+          <div class="portrait-caption">Dal Lake, Srinagar — 2024</div>
+        </div>
+        <div class="prose">
+          <p>I'm <strong>Vijith</strong> — a senior engineer who's spent the last decade quietly making other people's code easier to work with. I've built backends for student information systems, neobanks, and now regulatory data infrastructure for the US energy sector.</p>
+          <p>My favourite engagements are the ones where the codebase is <em>almost</em> right. A team that knows what it's trying to build, but the wiring has accumulated a few too many decisions made under pressure. I come in, listen for a few weeks, and then quietly start removing things until the shape of the product is visible again.</p>
+          <p>I work across Ruby on Rails, Python, Go, and Java — but the language is rarely the interesting part. What matters is observable systems, defensible data models, and teams that trust each other enough to ship every week.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <p class="eyebrow">§ Experience</p>
+      <div class="timeline">
+        <div class="role current">
+          <div class="role-years">2025 — Present<span class="duration">Now</span></div>
+          <div>
+            <h3 class="role-title">Senior Consultant <span class="at">at</span> Equinox Solutions</h3>
+            <p class="role-meta">Founder · Freelance · Bengaluru</p>
+            <p>Independent consultancy. Embedded engineering leadership for product teams who need a senior pair of hands — architecture review, data infrastructure, and team coaching.</p>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-years">2021 — 2025<span class="duration">4 yrs 5 mos</span></div>
+          <div>
+            <h3 class="role-title">Lead Consultant <span class="at">at</span> Beskar Technologies</h3>
+            <p class="role-meta">Full-time · Bengaluru</p>
+            <p>Led engagements across regulated data, fintech and SaaS. Built and ran the data platform for hData — a regulatory-intelligence product for US public utility commissions.</p>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-years">2019 — 2021<span class="duration">1 yr 5 mos</span></div>
+          <div>
+            <h3 class="role-title">Software Engineer <span class="at">at</span> Navi</h3>
+            <p class="role-meta">Full-time · Bengaluru</p>
+            <p>Backend engineer on a fast-growing neobank. Worked on lending workflows, KYC pipelines, and the internal services that kept underwriting honest at scale.</p>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-years">2016 — 2019<span class="duration">3 yrs 6 mos</span></div>
+          <div>
+            <h3 class="role-title">Senior Associate <span class="at">→</span> Associate <span class="at">at</span> MavenHive</h3>
+            <p class="role-meta">Full-time · Bengaluru</p>
+            <p>Consulting engineer at a Bengaluru product-engineering shop. Shipped Rails and React across half a dozen client teams — and learned how to be useful inside a codebase I didn't write.</p>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-years">2013 — 2016<span class="duration">2 yrs 10 mos</span></div>
+          <div>
+            <h3 class="role-title">Software Engineer <span class="at">at</span> Foradian Technologies</h3>
+            <p class="role-meta">Full-time · Bengaluru</p>
+            <p>First job out of college. Wrote Rails for Fedena, a student information system used by schools across the world — the codebase that taught me what "production" actually means.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <p class="eyebrow">§ Craft</p>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <ul class="skill-list">
+            <li>Python</li>
+            <li>Ruby on Rails</li>
+            <li>Java &amp; Spring Boot</li>
+            <li>Go</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Data &amp; Storage</h3>
+          <ul class="skill-list">
+            <li>Postgres</li>
+            <li>MySQL</li>
+            <li>Snowflake · DBT</li>
+            <li>Elasticsearch</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Platform</h3>
+          <ul class="skill-list">
+            <li>AWS</li>
+            <li>Kubernetes</li>
+            <li>Terraform</li>
+            <li>Dagster Plus</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Practice</h3>
+          <ul class="skill-list">
+            <li>Engineering leadership</li>
+            <li>Data pipeline orchestration</li>
+            <li>Architecture review</li>
+            <li>Team coaching</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <p class="eyebrow">§ Selected Work</p>
+      <div class="work-item">
+        <div>
+          <div class="work-num">01 / 2023 — 2025</div>
+          <h3 class="work-title">hData — regulatory intelligence for US utilities</h3>
+          <p class="work-desc">Designed and shipped the data pipeline that scrapes filings from US Public Utility Commission websites, lands them in Snowflake, transforms with DBT, and ships into Elasticsearch — making decades of regulatory text searchable for energy-sector analysts.</p>
+          <div class="work-stack">
+            <span>Dagster Plus</span><span>Snowflake</span><span>DBT</span><span>Elasticsearch</span><span>Python</span>
+          </div>
+        </div>
+        <a class="work-link" href="https://www.hdata.com/" target="_blank" rel="noopener">hdata.com ↗</a>
+      </div>
+      <div class="work-item">
+        <div>
+          <div class="work-num">02 / Available on request</div>
+          <h3 class="work-title">Selected fintech &amp; SaaS engagements</h3>
+          <p class="work-desc">Backend, data and platform work across neobanks, ed-tech, and B2B SaaS — under NDA. Happy to walk through specifics in conversation, including system diagrams and team outcomes.</p>
+          <div class="work-stack">
+            <span>Rails</span><span>Spring Boot</span><span>Go</span><span>AWS</span><span>Kubernetes</span>
+          </div>
+        </div>
+        <a class="work-link" href="#contact">Get in touch →</a>
+      </div>
+    </section>
+
+    <section id="writing">
+      <p class="eyebrow">§ Writing</p>
+      <div class="essay">
+        <div class="essay-date">Coming soon</div>
+        <div>
+          <h3 class="essay-title">The first three weeks of a consulting engagement</h3>
+          <p class="essay-dek">What I look at, what I don't touch, and how I decide which technical debt is actually worth paying down.</p>
+        </div>
+        <span class="essay-tag">Practice</span>
+      </div>
+      <div class="essay">
+        <div class="essay-date">Draft</div>
+        <div>
+          <h3 class="essay-title">A field guide to <em>Dagster Plus</em> for regulated data</h3>
+          <p class="essay-dek">Patterns and anti-patterns from shipping a production pipeline against scraped public-record sources.</p>
+        </div>
+        <span class="essay-tag">Data</span>
+      </div>
+      <div class="essay">
+        <div class="essay-date">Draft</div>
+        <div>
+          <h3 class="essay-title">Maintainable, not minimal</h3>
+          <p class="essay-dek">Why I keep telling teams to write more code, not less — and the kind of repetition that earns its keep.</p>
+        </div>
+        <span class="essay-tag">Essay</span>
+      </div>
+    </section>
+
+    <section id="contact">
+      <p class="eyebrow">§ Contact</p>
+      <div class="contact-grid">
+        <div>
+          <p class="contact-lede">If your team is mid-build and stuck — <em>let's talk</em>.</p>
+          <div class="contact-channels">
+            <div class="channel">
+              <span class="channel-label">Email</span>
+              <a class="channel-value" href="mailto:vijiths2c@gmail.com">vijiths2c@gmail.com</a>
+            </div>
+            <div class="channel">
+              <span class="channel-label">LinkedIn</span>
+              <a class="channel-value" href="https://www.linkedin.com/in/vijith-mv/" target="_blank" rel="noopener">linkedin.com/in/vijith-mv</a>
+            </div>
+            <div class="channel">
+              <span class="channel-label">GitHub</span>
+              <a class="channel-value" href="https://github.com/vijithmv499" target="_blank" rel="noopener">github.com/vijithmv499</a>
+            </div>
+            <div class="channel">
+              <span class="channel-label">Located</span>
+              <span class="channel-value">Bengaluru, Karnataka — IST</span>
+            </div>
+          </div>
+          <div class="btn-row">
+            <a class="btn" href="#" onclick="alert('Add your résumé PDF to the project and link it here.'); return false;">Download résumé ↓</a>
+          </div>
+        </div>
+        <form class="contact" onsubmit="handleSubmit(event)">
+          <div>
+            <label for="ed-name">Name</label>
+            <input id="ed-name" type="text" required placeholder="Your name" />
+          </div>
+          <div>
+            <label for="ed-email">Email</label>
+            <input id="ed-email" type="email" required placeholder="you@company.com" />
+          </div>
+          <div>
+            <label for="ed-msg">A short note</label>
+            <textarea id="ed-msg" required placeholder="What are you working on?"></textarea>
+          </div>
+          <div class="btn-row">
+            <button class="btn" type="submit">Send →</button>
+            <span style="font-family:var(--mono);font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.12em">Replies within 2 business days</span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="colophon">Set in Newsreader &amp; Inter. Built quietly in Bengaluru.</div>
+      <div>© 2026 Vijith M.V.</div>
+    </footer>
+  </main>
+
+<script>
+  // Theme — respects saved pref, falls back to system
+  (function () {
+    const saved = localStorage.getItem('vijith-theme');
+    if (saved) document.body.dataset.theme = saved;
+    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.dataset.theme = 'dark';
+    }
+  })();
+  function toggleTheme() {
+    const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.body.dataset.theme = next;
+    localStorage.setItem('vijith-theme', next);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    const orig = btn.textContent;
+    btn.textContent = 'Sent ✓';
+    btn.style.background = 'oklch(0.55 0.13 145)';
+    btn.style.borderColor = 'oklch(0.55 0.13 145)';
+    setTimeout(() => {
+      e.target.reset();
+      btn.textContent = orig;
+      btn.style.background = '';
+      btn.style.borderColor = '';
+    }, 2200);
+  }
+</script>
+</body>
+</html>

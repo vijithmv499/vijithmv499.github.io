@@ -1,0 +1,1072 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vijith mv · senior consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+<style>
+  :root {
+    --bg: oklch(0.985 0.003 240);
+    --bg-elev: oklch(1 0 0);
+    --bg-grid: oklch(0.94 0.005 240);
+    --fg: oklch(0.18 0.012 240);
+    --muted: oklch(0.40 0.012 240);
+    --faint: oklch(0.58 0.008 240);
+    --rule: oklch(0.18 0.012 240 / 0.10);
+    --rule-soft: oklch(0.18 0.012 240 / 0.05);
+    --accent: oklch(0.55 0.15 245);
+    --accent-2: oklch(0.65 0.16 145);
+    --warn: oklch(0.7 0.16 65);
+    --sans: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  [data-theme="dark"] {
+    --bg: oklch(0.135 0.01 240);
+    --bg-elev: oklch(0.175 0.012 240);
+    --bg-grid: oklch(0.20 0.012 240);
+    --fg: oklch(0.94 0.005 240);
+    --muted: oklch(0.72 0.008 240);
+    --faint: oklch(0.55 0.008 240);
+    --rule: oklch(0.94 0.005 240 / 0.12);
+    --rule-soft: oklch(0.94 0.005 240 / 0.06);
+    --accent: oklch(0.72 0.14 230);
+    --accent-2: oklch(0.75 0.14 145);
+    --warn: oklch(0.78 0.14 70);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'ss01';
+    transition: background 0.18s, color 0.18s;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: color-mix(in oklab, var(--accent) 25%, transparent); }
+
+  /* Sidebar markers — left-rail like a notebook */
+  .layout {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  /* Topbar */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in oklab, var(--bg) 85%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .topbar-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 12.5px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+  }
+  .brand-mark {
+    width: 22px; height: 22px;
+    border: 1.5px solid var(--fg);
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .brand-mark::after { content: 'vm'; }
+  .brand-path { color: var(--faint); }
+  .brand-path b { color: var(--fg); font-weight: 500; }
+  .nav { display: flex; gap: 6px; align-items: center; }
+  .nav a {
+    padding: 6px 10px;
+    color: var(--muted);
+    border-radius: 6px;
+    transition: background 0.12s, color 0.12s;
+  }
+  .nav a:hover { background: var(--bg-grid); color: var(--fg); }
+  .theme-toggle {
+    margin-left: 8px;
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: border-color 0.12s, color 0.12s;
+  }
+  .theme-toggle:hover { color: var(--fg); border-color: var(--fg); }
+  .theme-toggle::before { content: '◐'; }
+  [data-theme="dark"] .theme-toggle::before { content: '◑'; }
+
+  /* Section frame */
+  section {
+    padding: 64px 0 56px;
+    border-top: 1px solid var(--rule-soft);
+    position: relative;
+  }
+  section:first-of-type { border-top: none; }
+  .section-head {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+    align-items: baseline;
+  }
+  .section-id {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--faint);
+    letter-spacing: 0.04em;
+  }
+  .section-id b { color: var(--accent); font-weight: 500; }
+  .section-title {
+    font-size: 13.5px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--fg);
+    margin: 0;
+    text-transform: uppercase;
+    font-family: var(--mono);
+  }
+  .section-body {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 32px;
+  }
+  .section-aside {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+  .section-aside .kv { display: grid; grid-template-columns: 1fr; gap: 0; }
+  .section-aside .kv > div { padding: 3px 0; }
+  .section-aside .k { color: var(--faint); }
+  .section-aside .v { color: var(--muted); }
+
+  /* Hero */
+  .hero {
+    padding: 80px 0 60px;
+  }
+  .hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    border: 1px solid var(--rule);
+    background: var(--bg-elev);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .pulse {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent-2);
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent-2) 50%, transparent);
+    animation: pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent-2) 50%, transparent); }
+    70% { box-shadow: 0 0 0 8px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+  h1.hero-name {
+    font-size: clamp(40px, 5.6vw, 64px);
+    font-weight: 500;
+    letter-spacing: -0.028em;
+    line-height: 1.02;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  h1.hero-name .arrow { color: var(--accent); }
+  .hero-role {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 0 32px;
+    letter-spacing: 0.01em;
+  }
+  .hero-role b { color: var(--fg); font-weight: 500; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin: 32px 0 0;
+  }
+  .stat {
+    padding: 18px 16px 18px 0;
+    border-right: 1px solid var(--rule-soft);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-k {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .stat-v {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+  }
+  .stat-v .unit {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--faint);
+    margin-left: 4px;
+    letter-spacing: 0;
+  }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 36px;
+    align-items: start;
+  }
+  .portrait {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+    filter: grayscale(0.05);
+  }
+  .portrait-cap {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--faint);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+  .about-body p {
+    margin: 0 0 14px;
+    color: var(--fg);
+    font-size: 15.5px;
+    max-width: 62ch;
+    text-wrap: pretty;
+  }
+  .about-body p:last-child { margin-bottom: 0; }
+  .about-body code {
+    font-family: var(--mono);
+    font-size: 0.87em;
+    background: var(--bg-grid);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--accent);
+  }
+
+  /* Experience — log entries */
+  .log { display: grid; gap: 0; }
+  .entry {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 28px;
+    padding: 20px 0;
+    border-top: 1px dashed var(--rule);
+    align-items: baseline;
+  }
+  .entry:first-child { border-top: 1px solid var(--rule); }
+  .entry:last-child { border-bottom: 1px solid var(--rule); }
+  .entry-when {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .entry-when .dur { color: var(--faint); display: block; font-size: 10.5px; margin-top: 2px; }
+  .entry-role {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 2px;
+    letter-spacing: -0.005em;
+  }
+  .entry-at {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--faint);
+    margin: 0 0 8px;
+  }
+  .entry-at b { color: var(--muted); font-weight: 400; }
+  .entry-note {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 60ch;
+    text-wrap: pretty;
+  }
+  .entry-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+    padding: 3px 8px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    align-self: start;
+    white-space: nowrap;
+  }
+  .entry.now .entry-tag {
+    color: var(--accent-2);
+    border-color: var(--accent-2);
+  }
+
+  /* Skills — chip grid */
+  .skill-cluster {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .skill-block {
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .skill-block h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 14px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .skill-block h3::after {
+    content: attr(data-count);
+    color: var(--faint);
+    font-weight: 400;
+  }
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .chip {
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    color: var(--fg);
+  }
+  .chip.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+  /* Work */
+  .work-card {
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 26px;
+    background: var(--bg-elev);
+    margin-bottom: 16px;
+  }
+  .work-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .work-card-id {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    letter-spacing: 0.04em;
+  }
+  .work-card-status {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-2);
+    padding: 3px 8px;
+    border: 1px solid var(--accent-2);
+    border-radius: 4px;
+  }
+  .work-card h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 8px;
+    letter-spacing: -0.012em;
+  }
+  .work-card p {
+    color: var(--muted);
+    margin: 0 0 16px;
+    max-width: 64ch;
+    text-wrap: pretty;
+  }
+  .work-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 4px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    margin: 0 0 16px;
+  }
+  .flow-node {
+    padding: 4px 9px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    color: var(--fg);
+  }
+  .flow-arrow { color: var(--faint); margin: 0 2px; }
+  .work-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    border-bottom: 1px solid color-mix(in oklab, var(--accent) 40%, transparent);
+    padding-bottom: 1px;
+  }
+  .work-link:hover { border-bottom-color: var(--accent); }
+
+  /* Writing */
+  .post {
+    display: grid;
+    grid-template-columns: 88px 1fr 100px;
+    gap: 24px;
+    padding: 16px 0;
+    border-top: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+  .post:first-of-type { border-top: 1px solid var(--rule); }
+  .post:last-of-type { border-bottom: 1px solid var(--rule); }
+  .post-when {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+  }
+  .post-title {
+    margin: 0;
+    font-size: 15.5px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .post-dek {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+  .post-tag {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--faint);
+    text-align: right;
+  }
+
+  /* Contact */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .channels {
+    display: grid;
+    gap: 4px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--bg-elev);
+    overflow: hidden;
+  }
+  .ch {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: 14px;
+    padding: 12px 18px;
+    align-items: center;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .ch:last-child { border-bottom: none; }
+  .ch-k {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .ch-v {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--fg);
+  }
+  .ch-arrow {
+    font-family: var(--mono);
+    color: var(--faint);
+  }
+  .ch:hover .ch-arrow { color: var(--accent); }
+
+  form.contact {
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 22px;
+    display: grid;
+    gap: 14px;
+  }
+  form.contact label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+    display: block;
+  }
+  form.contact input, form.contact textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--fg);
+    outline: none;
+    transition: border-color 0.12s, box-shadow 0.12s;
+  }
+  form.contact input:focus, form.contact textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent);
+  }
+  form.contact textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.55;
+  }
+  .btn-row { display: flex; gap: 10px; align-items: center; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--fg);
+    color: var(--bg);
+    border: 1px solid var(--fg);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+  .btn:hover { background: var(--accent); border-color: var(--accent); color: white; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--fg);
+  }
+  .btn-ghost:hover { color: white; }
+  .btn-note {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--faint);
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--rule);
+    margin-top: 32px;
+    padding: 28px 0 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+  }
+  footer .ts b { color: var(--muted); }
+
+  @media (max-width: 760px) {
+    .layout, .topbar-inner { padding-left: 18px; padding-right: 18px; }
+    .nav a { display: none; }
+    .nav a.theme-toggle, .theme-toggle { display: inline-flex; }
+    .section-head, .section-body { grid-template-columns: 1fr; gap: 12px; }
+    .section-aside { order: 2; }
+    .about-grid { grid-template-columns: 1fr; }
+    .portrait { max-width: 200px; }
+    .entry { grid-template-columns: 1fr; gap: 6px; }
+    .skill-cluster { grid-template-columns: 1fr; }
+    .hero-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .post { grid-template-columns: 1fr; gap: 4px; }
+    .post-tag { text-align: left; }
+  }
+</style>
+</head>
+<body data-theme="light">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark"></span>
+        <span class="brand-path">~/<b>vijith-mv</b>/index</span>
+      </a>
+      <nav class="nav">
+        <a href="#about">about</a>
+        <a href="#experience">experience</a>
+        <a href="#skills">stack</a>
+        <a href="#work">work</a>
+        <a href="#writing">notes</a>
+        <a href="#contact">contact</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="top">
+
+    <section class="hero">
+      <div class="hero-status"><span class="pulse"></span>Open for new engagements · Bengaluru, IN</div>
+      <h1 class="hero-name">Vijith M.V. <span class="arrow">→</span> senior consultant.</h1>
+      <p class="hero-role">Engineering leadership &amp; data infrastructure. Currently embedded with teams through <b>Equinox Solutions</b>. Previously <b>Beskar</b>, <b>Navi</b>, <b>MavenHive</b>, <b>Foradian</b>.</p>
+      <div class="hero-grid">
+        <div class="stat">
+          <div class="stat-k">Years shipping</div>
+          <div class="stat-v">12<span class="unit">yrs</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-k">Companies</div>
+          <div class="stat-v">6<span class="unit">teams</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-k">Primary stack</div>
+          <div class="stat-v">Py<span class="unit"> · Rails · Go</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-k">Base</div>
+          <div class="stat-v">BLR<span class="unit">  IST · UTC+5:30</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-head">
+        <div class="section-id"><b>§ 01</b> &nbsp;·&nbsp;  about</div>
+        <h2 class="section-title">Profile</h2>
+      </div>
+      <div class="section-body">
+        <aside class="section-aside">
+          <div class="kv">
+            <div><span class="k">name</span></div>
+            <div><span class="v">Vijith M. Velayudhan</span></div>
+          </div>
+          <div class="kv" style="margin-top:14px">
+            <div><span class="k">since</span></div>
+            <div><span class="v">2013</span></div>
+          </div>
+          <div class="kv" style="margin-top:14px">
+            <div><span class="k">role</span></div>
+            <div><span class="v">Senior consultant</span></div>
+          </div>
+          <div class="kv" style="margin-top:14px">
+            <div><span class="k">based</span></div>
+            <div><span class="v">Bengaluru, IN</span></div>
+          </div>
+        </aside>
+        <div class="about-grid">
+          <div>
+            <img class="portrait" src="assets/portrait.jpg" alt="Vijith MV" />
+            <div class="portrait-cap">Srinagar, 2024<br/>portrait.jpg · 3024×4032</div>
+          </div>
+          <div class="about-body">
+            <p>I'm a senior engineer who's spent the last decade helping teams build <code>maintainable</code> products — backends for student information systems, neobanks, and most recently a regulatory-intelligence platform for the US energy sector.</p>
+            <p>I run <b>Equinox Solutions</b>, an independent consultancy. Engagements are usually senior-shaped: architecture review, data-platform builds, embedded technical leadership for product teams that want senior judgment without senior overhead.</p>
+            <p>I work across <code>Python</code>, <code>Ruby</code>, <code>Go</code>, and <code>Java</code> — but the language is rarely the interesting part. What matters is observable systems, defensible data models, and teams that trust each other enough to ship every week.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-head">
+        <div class="section-id"><b>§ 02</b> &nbsp;·&nbsp;  experience</div>
+        <h2 class="section-title">Work log</h2>
+      </div>
+      <div class="section-body">
+        <aside class="section-aside">
+          <div class="kv">
+            <div><span class="k">entries</span></div>
+            <div><span class="v">6 roles</span></div>
+          </div>
+          <div class="kv" style="margin-top:12px">
+            <div><span class="k">total</span></div>
+            <div><span class="v">12 yrs 2 mos</span></div>
+          </div>
+          <div class="kv" style="margin-top:12px">
+            <div><span class="k">order</span></div>
+            <div><span class="v">recent → first</span></div>
+          </div>
+        </aside>
+        <div class="log">
+          <div class="entry now">
+            <div class="entry-when">2025 · 11 → now<span class="dur">current</span></div>
+            <div>
+              <h3 class="entry-role">Senior Consultant</h3>
+              <p class="entry-at"><b>Equinox Solutions</b> · Freelance · Bengaluru</p>
+              <p class="entry-note">Independent practice — embedded engineering leadership for product teams. Architecture review, data infrastructure, and team coaching, scoped one engagement at a time.</p>
+            </div>
+            <span class="entry-tag">Now</span>
+          </div>
+          <div class="entry">
+            <div class="entry-when">2021 · 06 → 2025 · 10<span class="dur">4 yrs 5 mos</span></div>
+            <div>
+              <h3 class="entry-role">Lead Consultant</h3>
+              <p class="entry-at"><b>Beskar Technologies</b> · Full-time · Bengaluru</p>
+              <p class="entry-note">Led engagements across regulated data, fintech and SaaS. Built &amp; ran the data platform for hData — a regulatory-intelligence product for US public utility commissions.</p>
+            </div>
+            <span class="entry-tag">Lead</span>
+          </div>
+          <div class="entry">
+            <div class="entry-when">2019 · 12 → 2021 · 04<span class="dur">1 yr 5 mos</span></div>
+            <div>
+              <h3 class="entry-role">Software Engineer</h3>
+              <p class="entry-at"><b>Navi</b> · Full-time · Bengaluru</p>
+              <p class="entry-note">Backend engineer on a fast-growing neobank. Lending workflows, KYC pipelines, and the internal services that kept underwriting honest at scale.</p>
+            </div>
+            <span class="entry-tag">FinTech</span>
+          </div>
+          <div class="entry">
+            <div class="entry-when">2019 · 01 → 2019 · 12<span class="dur">1 yr</span></div>
+            <div>
+              <h3 class="entry-role">Senior Associate</h3>
+              <p class="entry-at"><b>MavenHive Technologies</b> · Full-time · Bengaluru</p>
+              <p class="entry-note">Senior engineer on client engagements — Rails &amp; React, mentorship, technical interviews. Promoted from Associate after 2.5 years.</p>
+            </div>
+            <span class="entry-tag">Consult</span>
+          </div>
+          <div class="entry">
+            <div class="entry-when">2016 · 07 → 2018 · 12<span class="dur">2 yrs 6 mos</span></div>
+            <div>
+              <h3 class="entry-role">Associate</h3>
+              <p class="entry-at"><b>MavenHive Technologies</b> · Full-time · Bengaluru</p>
+              <p class="entry-note">Consulting engineer at a Bengaluru product shop. Shipped Rails and React across half a dozen client teams — and learned how to be useful inside a codebase I didn't write.</p>
+            </div>
+            <span class="entry-tag">Consult</span>
+          </div>
+          <div class="entry">
+            <div class="entry-when">2013 · 09 → 2016 · 06<span class="dur">2 yrs 10 mos</span></div>
+            <div>
+              <h3 class="entry-role">Software Engineer</h3>
+              <p class="entry-at"><b>Foradian Technologies</b> · Full-time · Bengaluru</p>
+              <p class="entry-note">First job out of college. Wrote Rails for Fedena, a student information system used by schools across the world — the codebase that taught me what "production" actually means.</p>
+            </div>
+            <span class="entry-tag">EdTech</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head">
+        <div class="section-id"><b>§ 03</b> &nbsp;·&nbsp;  stack</div>
+        <h2 class="section-title">Working set</h2>
+      </div>
+      <div class="section-body">
+        <aside class="section-aside">
+          <div class="kv">
+            <div><span class="k">primary</span></div>
+            <div><span class="v">filled chips</span></div>
+          </div>
+          <div class="kv" style="margin-top:12px">
+            <div><span class="k">working</span></div>
+            <div><span class="v">outlined chips</span></div>
+          </div>
+          <div class="kv" style="margin-top:12px">
+            <div><span class="k">cert</span></div>
+            <div><span class="v">Anthropic CCA-F · in progress</span></div>
+          </div>
+        </aside>
+        <div class="skill-cluster">
+          <div class="skill-block">
+            <h3 data-count="04">Languages</h3>
+            <div class="chip-row">
+              <span class="chip primary">Python</span>
+              <span class="chip primary">Ruby on Rails</span>
+              <span class="chip">Java · Spring Boot</span>
+              <span class="chip">Go</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <h3 data-count="04">Data &amp; Storage</h3>
+            <div class="chip-row">
+              <span class="chip primary">PostgreSQL</span>
+              <span class="chip">MySQL</span>
+              <span class="chip">Snowflake</span>
+              <span class="chip">Elasticsearch</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <h3 data-count="04">Platform &amp; IaC</h3>
+            <div class="chip-row">
+              <span class="chip primary">AWS</span>
+              <span class="chip">Kubernetes</span>
+              <span class="chip">Terraform</span>
+              <span class="chip">Dagster Plus</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <h3 data-count="04">Practice</h3>
+            <div class="chip-row">
+              <span class="chip primary">Engineering leadership</span>
+              <span class="chip">Data pipeline orchestration</span>
+              <span class="chip">Architecture review</span>
+              <span class="chip">DBT modelling</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-head">
+        <div class="section-id"><b>§ 04</b> &nbsp;·&nbsp;  work</div>
+        <h2 class="section-title">Selected projects</h2>
+      </div>
+      <div class="section-body">
+        <aside class="section-aside">
+          <div class="kv">
+            <div><span class="k">listed</span></div>
+            <div><span class="v">02 / many</span></div>
+          </div>
+          <div class="kv" style="margin-top:12px">
+            <div><span class="k">nda</span></div>
+            <div><span class="v">most engagements</span></div>
+          </div>
+          <div class="kv" style="margin-top:12px">
+            <div><span class="k">deep-dive</span></div>
+            <div><span class="v">on request</span></div>
+          </div>
+        </aside>
+        <div>
+          <article class="work-card">
+            <div class="work-card-head">
+              <div class="work-card-id">project_01 · 2023 — 2025</div>
+              <span class="work-card-status">Shipped</span>
+            </div>
+            <h3>hData · regulatory intelligence for US utilities</h3>
+            <p>Designed and shipped the data pipeline that scrapes filings from US Public Utility Commission websites, lands them in Snowflake, transforms with DBT, and ships into Elasticsearch — making decades of regulatory text searchable for energy-sector analysts.</p>
+            <div class="work-flow">
+              <span class="flow-node">PUC sites</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-node">Dagster Plus</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-node">Snowflake</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-node">DBT</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-node">Elasticsearch</span>
+            </div>
+            <a class="work-link" href="https://www.hdata.com/" target="_blank" rel="noopener">hdata.com  ↗</a>
+          </article>
+          <article class="work-card">
+            <div class="work-card-head">
+              <div class="work-card-id">project_02 · under NDA</div>
+              <span class="work-card-status" style="color:var(--faint);border-color:var(--rule)">Private</span>
+            </div>
+            <h3>Fintech &amp; SaaS engagements</h3>
+            <p>Backend, data and platform work across neobanks, ed-tech, and B2B SaaS. Happy to walk through specifics — system diagrams, team outcomes, what I'd do differently — in conversation.</p>
+            <div class="work-flow">
+              <span class="flow-node">Rails</span>
+              <span class="flow-node">Spring Boot</span>
+              <span class="flow-node">Go</span>
+              <span class="flow-node">AWS</span>
+              <span class="flow-node">Kubernetes</span>
+            </div>
+            <a class="work-link" href="#contact">request_brief()  →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing">
+      <div class="section-head">
+        <div class="section-id"><b>§ 05</b> &nbsp;·&nbsp;  notes</div>
+        <h2 class="section-title">Writing</h2>
+      </div>
+      <div class="section-body">
+        <aside class="section-aside">
+          <div class="kv">
+            <div><span class="k">drafts</span></div>
+            <div><span class="v">3 queued</span></div>
+          </div>
+          <div class="kv" style="margin-top:12px">
+            <div><span class="k">rss</span></div>
+            <div><span class="v">soon</span></div>
+          </div>
+        </aside>
+        <div>
+          <div class="post">
+            <div class="post-when">soon</div>
+            <div>
+              <h3 class="post-title">The first three weeks of a consulting engagement</h3>
+              <p class="post-dek">What I look at, what I don't touch, and how I decide which technical debt is actually worth paying down.</p>
+            </div>
+            <div class="post-tag">practice</div>
+          </div>
+          <div class="post">
+            <div class="post-when">draft</div>
+            <div>
+              <h3 class="post-title">A field guide to Dagster Plus for regulated data</h3>
+              <p class="post-dek">Patterns and anti-patterns from shipping a production pipeline against scraped public-record sources.</p>
+            </div>
+            <div class="post-tag">data</div>
+          </div>
+          <div class="post">
+            <div class="post-when">draft</div>
+            <div>
+              <h3 class="post-title">Maintainable, not minimal</h3>
+              <p class="post-dek">Why I keep telling teams to write more code, not less — and the kind of repetition that earns its keep.</p>
+            </div>
+            <div class="post-tag">essay</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <div class="section-id"><b>§ 06</b> &nbsp;·&nbsp;  contact</div>
+        <h2 class="section-title">Reach me</h2>
+      </div>
+      <div class="section-body">
+        <aside class="section-aside">
+          <div class="kv">
+            <div><span class="k">reply</span></div>
+            <div><span class="v">&lt; 2 business days</span></div>
+          </div>
+          <div class="kv" style="margin-top:12px">
+            <div><span class="k">prefer</span></div>
+            <div><span class="v">email · async</span></div>
+          </div>
+          <div class="kv" style="margin-top:12px">
+            <div><span class="k">brief</span></div>
+            <div><span class="v">1 paragraph is plenty</span></div>
+          </div>
+        </aside>
+        <div>
+          <div class="contact-grid">
+            <div>
+              <div class="channels">
+                <a class="ch" href="mailto:vijiths2c@gmail.com">
+                  <span class="ch-k">email</span>
+                  <span class="ch-v">vijiths2c@gmail.com</span>
+                  <span class="ch-arrow">→</span>
+                </a>
+                <a class="ch" href="https://www.linkedin.com/in/vijith-mv/" target="_blank" rel="noopener">
+                  <span class="ch-k">linkedin</span>
+                  <span class="ch-v">/in/vijith-mv</span>
+                  <span class="ch-arrow">↗</span>
+                </a>
+                <a class="ch" href="https://github.com/vijithmv499" target="_blank" rel="noopener">
+                  <span class="ch-k">github</span>
+                  <span class="ch-v">/vijithmv499</span>
+                  <span class="ch-arrow">↗</span>
+                </a>
+                <div class="ch">
+                  <span class="ch-k">located</span>
+                  <span class="ch-v">Bengaluru, IN</span>
+                  <span class="ch-arrow">●</span>
+                </div>
+              </div>
+              <div class="btn-row" style="margin-top:18px">
+                <a class="btn btn-ghost" href="#" onclick="alert('Add your résumé PDF to the project and link it here.'); return false;">resume.pdf  ↓</a>
+                <span class="btn-note">~ 1 page · last updated 2026</span>
+              </div>
+            </div>
+            <form class="contact" onsubmit="handleSubmit(event)">
+              <div>
+                <label for="en-name">name</label>
+                <input id="en-name" type="text" required placeholder="Your name" />
+              </div>
+              <div>
+                <label for="en-email">email</label>
+                <input id="en-email" type="email" required placeholder="you@company.com" />
+              </div>
+              <div>
+                <label for="en-msg">brief</label>
+                <textarea id="en-msg" required placeholder="One paragraph: what are you working on, and what's the question?"></textarea>
+              </div>
+              <div class="btn-row">
+                <button class="btn" type="submit">send()  →</button>
+                <span class="btn-note">no auto-replies, ever</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="ts">© <b>2026 vijith-mv</b> · built in bengaluru</div>
+      <div>v2.0 · last_deploy_at: 2026-05-12T00:00Z</div>
+    </footer>
+  </div>
+
+<script>
+  (function () {
+    const saved = localStorage.getItem('vijith-theme-n');
+    if (saved) document.body.dataset.theme = saved;
+    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.dataset.theme = 'dark';
+    }
+  })();
+  function toggleTheme() {
+    const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.body.dataset.theme = next;
+    localStorage.setItem('vijith-theme-n', next);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    const orig = btn.textContent;
+    btn.textContent = 'sent ✓';
+    setTimeout(() => {
+      e.target.reset();
+      btn.textContent = orig;
+    }, 2200);
+  }
+</script>
+</body>
+</html>
