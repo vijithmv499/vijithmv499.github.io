@@ -1065,7 +1065,7 @@
                 <span class="ch-arr">●</span>
               </div>
             </div>
-            <a class="btn ghost" href="#" onclick="alert('Add your résumé PDF to the project and link it here.'); return false;">Download résumé ↓</a>
+            <a class="btn ghost" href="assets/Vijith_MV_Resume.pdf" download>Download résumé ↓</a>
           </div>
           <form class="contact" onsubmit="handleSubmit(event)">
             <h4>Send a note</h4>
@@ -1118,12 +1118,12 @@
     btn.disabled = true;
     btn.textContent = 'Sending…';
     try {
-      await fetch(CONTACT_SCRIPT_URL, {
+      const res = await fetch(CONTACT_SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(data),
       });
+      if (!res.ok) throw new Error('Request failed: ' + res.status);
       btn.textContent = 'Sent ✓';
       form.reset();
     } catch (err) {
